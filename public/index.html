@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Star Inc. Web 研發技能訓練教學</title>
+    <link href="assets/css/main.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.23.0/dist/axios.min.js"></script>
+    <script defer src="assets/js/main.js"></script>
+</head>
+<body>
+<div id="app">
+    <form action="#" method="post">
+        <div>Status: [{{response.status}}] {{response.data}}</div>
+        <div>
+            <label>
+                Title:<br/>
+                <input type="text" v-model="writing.title"/>
+            </label>
+        </div>
+        <div>
+            <label>
+                Content:<br/>
+                <textarea v-model="writing.content"></textarea>
+            </label>
+        </div>
+        <div>
+            <input @click.prevent="sendArticle" type="submit"/>
+        </div>
+    </form>
+    <div :key="index" v-for="(article, index) in articles">
+        <p>
+            <i>[{{index}}]</i><br/>
+            <strong v-text="article.title"></strong><br/>
+            <span v-text="article.content"></span><br/>
+            <span>CreateAt: {{article.createdAt}}</span><br/>
+            <span>UpdatedAt: {{article.updatedAt}}</span>
+        </p>
+    </div>
+</div>
+</body>
+</html>

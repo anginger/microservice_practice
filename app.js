@@ -7,18 +7,22 @@ const Article = require("./models/article");
 const app = express();
 const port = 3000
 
-app.get('/', function (_, response) {
+// Static Files
+app.use(express.static('public'));
+
+// API
+app.get('/api', function (_, response) {
     response.status(statusCode.OK).send({
         status: statusCode.OK,
         data: {
-            description: "Star Inc. Web 研發技能訓練教學 ",
+            description: "Star Inc. Web 研發技能訓練教學",
             information: "https://github.com/star-inc/essential",
             copyright: "(c)2021 Star Inc."
         }
     });
 });
 
-app.use('/article', article);
+app.use('/api/article', article);
 
 // Preparing Models
 Article.sync();
