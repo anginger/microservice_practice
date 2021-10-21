@@ -24,7 +24,7 @@ router.post('/', function (request, response) {
             status: statusCode.BAD_REQUEST
         });
     } else {
-        memoryHandler.sync().then(() => {
+        Article.sync().then(() => {
             Article.create({
                 title: request.body.title,
                 content: request.body.content,
