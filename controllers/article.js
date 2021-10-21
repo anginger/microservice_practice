@@ -24,12 +24,10 @@ router.post('/', function (request, response) {
             status: statusCode.BAD_REQUEST
         });
     } else {
-        Article.sync().then(() => {
-            Article.create({
-                title: request.body.title,
-                content: request.body.content,
-            }).then((data) => console.log(data.toJSON()));
-        })
+        Article.create({
+            title: request.body.title,
+            content: request.body.content,
+        }).then((data) => console.log(data.toJSON()));
         response.status(statusCode.CREATED).send({
             status: statusCode.CREATED
         });
