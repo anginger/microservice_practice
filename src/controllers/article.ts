@@ -1,24 +1,19 @@
-const statusCode = require('http-status-codes');
-const express = require('express');
-const router = express.Router();
+import statusCode from 'http-status-codes';
+import express, {urlencoded, Router} from 'express';
 
-const {Sequelize} = require("sequelize");
-const memoryHandler = new Sequelize('sqlite::memory:');
+import Article from '../models/article';
 
-const Article = require('../models/article')
-
-router.use(express.urlencoded());
-
-router.get('/list', function (_, response) {
-    Article.findAll().then(articles => {
+const router: Router = express.Router();
+router.use(urlencoded({ extended: true }));
+router.get('/list', function (_: express.Request, response: express.Response) {
+    Article.findAll().then((articles: Article[]) => {
         response.status(statusCode.OK).send({
             status: statusCode.OK,
             data: articles
         });
     });
 })
-
-router.post('/', function (request, response) {
+router.post('/', function (request: express.Request, response: express.Response) {
     if (!(request.body.title && request.body.content)) {
         response.status(statusCode.BAD_REQUEST).send({
             status: statusCode.BAD_REQUEST
@@ -34,4 +29,4 @@ router.post('/', function (request, response) {
     }
 });
 
-module.exports = router;
+export default router;

@@ -28,9 +28,9 @@
             <input @click.prevent="sendArticle" type="submit"/>
         </div>
     </form>
-    <div :key="index" v-for="(article, index) in articles">
+    <div :key="app" v-for="(article, app) in articles">
         <p>
-            <i>[{{index}}]</i><br/>
+            <i>[{{app}}]</i><br/>
             <strong v-text="article.title"></strong><br/>
             <span v-text="article.content"></span><br/>
             <span>CreateAt: {{article.createdAt}}</span><br/>
