@@ -1,11 +1,11 @@
 import statusCode from 'http-status-codes';
-import express, {urlencoded, Router} from 'express';
+import {Request, Response, Router, urlencoded} from 'express';
 
 import Article from '../models/article';
 
-const router: Router = express.Router();
-router.use(urlencoded({ extended: true }));
-router.get('/list', function (_: express.Request, response: express.Response) {
+const router: Router = Router();
+router.use(urlencoded({extended: true}));
+router.get('/list', function (_: Request, response: Response) {
     Article.findAll().then((articles: Article[]) => {
         response.status(statusCode.OK).send({
             status: statusCode.OK,
@@ -13,7 +13,7 @@ router.get('/list', function (_: express.Request, response: express.Response) {
         });
     });
 })
-router.post('/', function (request: express.Request, response: express.Response) {
+router.post('/', function (request: Request, response: Response) {
     if (!(request.body.title && request.body.content)) {
         response.status(statusCode.BAD_REQUEST).send({
             status: statusCode.BAD_REQUEST

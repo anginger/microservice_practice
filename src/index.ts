@@ -1,11 +1,11 @@
-import express, {Router} from "express";
+import {Request, Response, Router} from 'express';
 import statusCode from "http-status-codes";
 
 import article from "./controllers/article";
 
-const router: Router = express.Router();
+const router: Router = Router();
 
-router.get('/', function (_: express.Request, response: express.Response) {
+router.get('/', function (_: Request, response: Response) {
     response.status(statusCode.OK).send({
         status: statusCode.OK,
         data: {
