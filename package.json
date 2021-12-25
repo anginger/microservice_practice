@@ -1,7 +1,7 @@
 {
   "name": "essential",
   "version": "1.0.0",
-  "description": "Star Inc. Web研發技能訓練教學 ",
+  "description": "General MicroService Application Template",
   "main": "app.ts",
   "scripts": {
     "dev": "node_modules/.bin/nodemon app.ts",

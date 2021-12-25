@@ -9,7 +9,7 @@ router.get('/', function (_: express.Request, response: express.Response) {
     response.status(statusCode.OK).send({
         status: statusCode.OK,
         data: {
-            description: "Star Inc. Web 研發技能訓練教學",
+            description: "General MicroService Application Template",
             information: "https://github.com/star-inc/essential",
             copyright: "(c)2021 Star Inc."
         }
