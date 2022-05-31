@@ -1,5 +1,5 @@
-# Essential
+# microservice_practice
 
-General MicroService Application Template
+MicroService Development Course
 
-> (c) 2021 Star Inc.
+> (c) 2022 Star Inc.
